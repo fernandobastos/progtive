@@ -36,7 +36,8 @@ var mailOptions = {
     html: '<b>Hello world 🐴</b>' // html body
 };
 router.post('/sendMessage', function(req, res) {
-  console.log(req.body);
+  res.json({ message:"req.body"});
+  console.log(req);
   /*var transporter = nodemailer.createTransport(smtpConfig);
   // send mail with defined transport object
   transporter.sendMail(mailOptions, function(error, info){
