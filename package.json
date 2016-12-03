@@ -1,0 +1,23 @@
+{
+  "name": "contact_api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "5.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fernandobastos/progtive"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "nodemailer": "^2.6.4"
+  },
+  "devDependencies": {},
+  "license": "UNLICENSED",
+  "description": "contact_api"
+}
