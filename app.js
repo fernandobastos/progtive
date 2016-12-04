@@ -29,23 +29,26 @@ var smtpConfig = {
 };
 // setup e-mail data with unicode symbols
 var mailOptions = {
-    from: "test", // sender address
     to: 'admin@progtive.com', // list of receivers
     subject: 'Hello ✔', // Subject line
     text: 'Hello world 🐴', // plaintext body
     html: '<b>Hello world 🐴</b>' // html body
 };
 router.post('/sendMessage', function(req, res) {
-  res.json({ message:"req.body"});
-  console.log(req);
-  /*var transporter = nodemailer.createTransport(smtpConfig);
+  var transporter = nodemailer.createTransport(smtpConfig);
   // send mail with defined transport object
-  transporter.sendMail(mailOptions, function(error, info){
-      if(error){
-          return console.log(error);
-      }
-      console.log('Message sent: ' + info.response);
-  });*/
+  if (req.body) {
+    mailOptions.from = req.body.from;
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            return console.log(error);
+        }
+        console.log('Message sent: ' + info.response);
+    });
+  }else{
+    return console.log("empty request"+req.body);
+  }
+
 });
 
 // REGISTER OUR ROUTES -------------------------------
