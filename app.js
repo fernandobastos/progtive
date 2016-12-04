@@ -32,6 +32,9 @@ var mailOptions = {
     to: 'admin@progtive.com', // list of receivers
 };
 router.post('/sendMessage', function(req, res) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'accept, content-type, x-parse-application-id, x-parse-rest-api-key, x-parse-session-token');
   var transporter = nodemailer.createTransport(smtpConfig);
   // send mail with defined transport object
   if (req.body) {
