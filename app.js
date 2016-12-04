@@ -39,12 +39,12 @@ router.post('/sendMessage', function(req, res) {
     mailOptions.text = req.body.text;
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
-            return console.log(error);
+            res.json({"Error": console.log(error)});
         }
-        console.log('Message sent: ' + info.response);
+        res.json({"Message sent": info.response});
     });
   }else{
-    return console.log("empty request"+req.body);
+    res.json({"empty request": req.body});
   }
 
 });
