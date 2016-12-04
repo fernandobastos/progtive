@@ -35,7 +35,7 @@ router.post('/sendMessage', function(req, res) {
   var transporter = nodemailer.createTransport(smtpConfig);
   // send mail with defined transport object
   if (req.body) {
-    mailOptions.from = req.body.from+" - "+req.body.email;
+    mailOptions.subject = req.body.from+" - "+req.body.email;
     mailOptions.text = req.body.text;
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
