@@ -30,15 +30,13 @@ var smtpConfig = {
 // setup e-mail data with unicode symbols
 var mailOptions = {
     to: 'admin@progtive.com', // list of receivers
-    subject: 'Hello ✔', // Subject line
-    text: 'Hello world 🐴', // plaintext body
-    html: '<b>Hello world 🐴</b>' // html body
 };
 router.post('/sendMessage', function(req, res) {
   var transporter = nodemailer.createTransport(smtpConfig);
   // send mail with defined transport object
   if (req.body) {
-    mailOptions.from = req.body.from;
+    mailOptions.from = req.body.from+" - "+req.body.email;
+    mailOptions.text = req.body.text;
     transporter.sendMail(mailOptions, function(error, info){
         if(error){
             return console.log(error);
